@@ -4,9 +4,9 @@ using MovieApi.Models;
 
 namespace MovieApi.Controllers
 {
-    [Route("api/[contoller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class MoviesContoller : ControllerBase
+    public class MoviesController : ControllerBase
     {
         private readonly MovieApiContext _db;
         public MoviesController(MovieApiContext db)
