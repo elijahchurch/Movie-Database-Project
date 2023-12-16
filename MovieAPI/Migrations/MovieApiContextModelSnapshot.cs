@@ -27,11 +27,17 @@ namespace MovieApi.Migrations
                     b.Property<int>("Date")
                         .HasColumnType("int");
 
+                    b.Property<string>("Length")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
                     b.Property<string>("OverView")
                         .HasColumnType("longtext");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
 
                     b.HasKey("MovieId");
 
