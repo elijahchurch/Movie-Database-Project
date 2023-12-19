@@ -13,6 +13,10 @@ namespace MovieApi.Controllers
         {
             _db = db;
         }
+        private bool MovieExists(int id)
+        {
+            return _db.Movies.Any(e => e.MovieId == id);
+        }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Movie>>> Get()
@@ -69,9 +73,20 @@ namespace MovieApi.Controllers
             return NoContent();
         }
 
-        private bool MovieExists(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMovie(int id)
         {
-            return _db.Movies.Any(e => e.MovieId == id);
+            Movie movie = await _db.Movies.FindAsync(id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            _db.Movies.Remove(movie);
+            await _db.SaveChangesAsync();
+
+            return NoContent();
         }
+
     }
 }
