@@ -17,5 +17,9 @@ namespace MovieApi.Models
         public int Length {get; set;}
         public MovieRating Rating { get; set;}
         public string OverView { get; set;}
+        #nullable enable
+        public Photo? Poster { get; set;}
+        
+        public Photo? Cover { get; set;}
     }
 }
