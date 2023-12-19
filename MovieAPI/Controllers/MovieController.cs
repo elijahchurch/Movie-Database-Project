@@ -35,9 +35,43 @@ namespace MovieApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Movie>> Post(Movie movie)
         {
-        _db.Movies.Add(movie);
-        await _db.SaveChangesAsync();
-        return CreatedAtAction(nameof(GetMovie), new { id = movie.MovieId }, movie);
+            _db.Movies.Add(movie);
+            await _db.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetMovie), new { id = movie.MovieId }, movie);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, Movie movie)
+        {
+            if (id != movie.MovieId)
+            {
+                return BadRequest();
+            }
+
+            _db.Movies.Update(movie);
+
+            try 
+            {
+                await _db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!MovieExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        private bool MovieExists(int id)
+        {
+            return _db.Movies.Any(e => e.MovieId == id);
         }
     }
 }
