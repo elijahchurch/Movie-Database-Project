@@ -14,7 +14,7 @@ namespace MovieApi.Models
         public int MovieId {get; set;}
         public string Name { get; set;}
         public int Date { get; set;}
-        public string Length {get; set;}
+        public int Length {get; set;}
         public MovieRating Rating { get; set;}
         public string OverView { get; set;}
     }
