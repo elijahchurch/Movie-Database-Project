@@ -19,9 +19,22 @@ namespace MovieApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Movie>>> Get()
+        public async Task<ActionResult<IEnumerable<Movie>>> Get(string name, int date, int maxLength)
         {
-            return await _db.Movies.ToListAsync();
+            IQueryable<Movie> query = _db.Movies.AsQueryable();
+            if (name != null)
+            {
+                query = query.Where(e => e.Name == name);
+            }
+            if (date != 0)
+            {
+                query = query.Where(e => e.Date == date);
+            }
+            if (maxLength > 0)
+            {
+                query = query.Where(e => e.Length <= maxLength);
+            }
+            return await query.ToListAsync();
         }
 
         [HttpGet("{id}")]
