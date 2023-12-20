@@ -1,9 +1,8 @@
 namespace MovieApi.Models
 {
-    public class Photo
+    public class CoverPhoto
     {
-        public int PhotoId { get; set;}
-        public string Name { get; set;}
+        public int CoverPhotoId { get; set;}
         public string Path { get; set;}
         #nullable enable
         public int? MovieId { get; set;}

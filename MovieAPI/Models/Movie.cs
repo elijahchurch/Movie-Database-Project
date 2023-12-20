@@ -18,8 +18,8 @@ namespace MovieApi.Models
         public MovieRating Rating { get; set;}
         public string OverView { get; set;}
         #nullable enable
-        public Photo? Poster { get; set;}
+        public Poster? Poster { get; set;}
         
-        public Photo? Cover { get; set;}
+        public CoverPhoto? CoverPhoto { get; set;}
     }
 }
