@@ -2,11 +2,9 @@ import { Link } from "react-router-dom"
 
 const Header = () => {
     return (
-        <div>
+        <div id="header">
             <h1>Title of Movie App</h1>
-            <button>
-                {/* <Link></Link> */}
-            </button>
+            <button id="menuButton"><img src="img/menu.png" alt="menu icon"/></button>
         </div>
     )
 }
