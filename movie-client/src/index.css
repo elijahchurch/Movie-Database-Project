@@ -14,12 +14,15 @@ code {
     monospace;
 }
 
-/* Header Styling */
-#header {
+/* NavBar Styling */
+#navBar {
   border-bottom: solid;
   border-color: #222e38;
   background-color: #171d22;
-  /* position: absolute; */
+  position: static;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   top: 0;
   overflow: hidden;
   height: 54px;
@@ -27,12 +30,15 @@ code {
   width: 100%;
 }
 
-#menuButton{
-  float: right;
-  border: 4px;
-  border-color: black;
-  border-bottom: 0;
+#headerTitle {
+  margin: auto;
+}
+
+#menuButton {
+  background-color: #171d22;
   height: 100%;
-  width: 100px;
-  margin-left: 5px;
+}
+
+#menuImage {
+  /* color: white; */
 }
