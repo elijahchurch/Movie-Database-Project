@@ -1,7 +1,7 @@
 const MovieForm = () => {
     return(
         <div>
-            <h1>Search Template</h1>
+            <h1>Movie Form</h1>
         </div>
     )
 }
