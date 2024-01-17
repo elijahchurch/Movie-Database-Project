@@ -14,10 +14,15 @@ code {
     monospace;
 }
 
+/* utility styling */
+
+.hidden {
+  display: none;
+}
 /* NavBar Styling */
 #navBar {
-  border-bottom: solid;
-  border-color: #222e38;
+  /* border-bottom: solid;
+  border-color: #222e38; */
   background-color: #171d22;
   position: static;
   display: flex;
@@ -40,8 +45,7 @@ code {
 }
 
 #menuImage {
-  height: 54px;
-  width: 54px;
+  height: 45px;
 }
 
 .dropDown {
@@ -51,12 +55,24 @@ code {
 
 .dropDown-options {
   position: absolute;
-  background-color: #171d22;
-  min-width: 300px;
+  text-align: center;
+  background-color: #0a1c2b;
+  max-width: 200px;
+  width: 200px;
+  right: 0;
+  top: 54px;
   z-index: 1;
 }
 
 .dropDown-links {
   display: block;
+  color: white;
+  background-color: #0a1c2b;
+  text-decoration: none;
+  font-size: larger;
   margin: 4px;
+}
+
+.dropDown-links:hover {
+  background-color: rgb(17, 58, 58);
 }

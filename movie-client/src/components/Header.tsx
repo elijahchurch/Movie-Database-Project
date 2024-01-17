@@ -13,7 +13,7 @@ const Header = () => {
             <h1 id="headerTitle">Title of Movie App</h1>
             <div className="dropDown">
                 <button onClick={handleDropDownClick} id="menuButton"><img id="menuImage" src={dropDownIsClicked ? "img/icons/x.png":"img/icons/menu.png"} alt="menu icon"/></button>
-                <div className="dropDown-options">
+                <div className={dropDownIsClicked ? "dropDown-options" : "dropDown-options hidden"}>
                     <Link className="dropDown-links" to="/movieForm">Add Movie</Link>
                 </div>
             </div>
