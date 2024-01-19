@@ -1,37 +1,45 @@
-import React, {MouseEvent, ChangeEvent, useState} from "react";
+import React, {MouseEvent, useState} from "react";
 
 const MovieForm = () => {
-    const [movieName, setMovieName] = useState("");
-    const [movieYear, setMovieYear] = useState("");
-    const [rating, setRating] = useState("");
-    const [movieLength, setMovieLength] = useState("");
-    const [overView, setOverView] = useState("");
+    const [movieName, setMovieName] = useState<string>("");
+    const [movieYear, setMovieYear] = useState<number>();
+    const [rating, setRating] = useState<string>("");
+    const [movieLength, setMovieLength] = useState<number>();
+    const [overView, setOverView] = useState<string>("");
 
-    const handleChange = (event : React.FormEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        event.preventDefault;
+    const handleChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) : void => {
+        event.preventDefault();
         switch (event.currentTarget.name) {
             case "movieName":
                 setMovieName(event.currentTarget.value);
                 break;
             case "movieYear":
-                setMovieYear(event.currentTarget.value);
+                setMovieYear(parseInt(event.currentTarget.value));
                 break;
             case "rating":
                 setRating(event.currentTarget.value);
                 break;
             case "movieLength":
-                setMovieLength(event.currentTarget.value);
+                setMovieLength(parseInt(event.currentTarget.value));
                 break;
             case "overView":
                 setOverView(event.currentTarget.value);
                 break;
-        }
-    }
+        };
+    };
 
     const handleMovieForm = async (event : MouseEvent) => {
         event?.preventDefault();
-        console.log(event);
-    }
+        const movieData = {
+            Name: movieName,
+            Date: movieYear,
+            Length: movieLength,
+            Rating: rating,
+            OverView: overView
+        }
+        console.log(movieData);
+    };
+
     return(
         <div>
             <form className="formContainer">
