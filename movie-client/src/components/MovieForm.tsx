@@ -36,8 +36,12 @@ const MovieForm = () => {
             Length: movieLength,
             Rating: rating,
             OverView: overView
-        }
-        console.log(movieData);
+        };
+        const options = {
+            method: "POST",
+            body: JSON.stringify(movieData)
+        };
+        await fetch("http://localhost:5087/api/movies", options)
     };
 
     return(
