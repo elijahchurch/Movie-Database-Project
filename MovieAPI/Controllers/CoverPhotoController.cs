@@ -14,7 +14,7 @@ namespace MovieApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CoverPhoto>> GetCoverPhoto(int id)
+        public async Task<ActionResult<CoverPhoto>> GetCoverPhoto(string id)
         {
             CoverPhoto coverPhoto = await _db.CoverPhotos.FindAsync(id);
             if (coverPhoto == null)
@@ -34,7 +34,7 @@ namespace MovieApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCoverPhoto(int id)
+        public async Task<IActionResult> DeleteCoverPhoto(string id)
         {
             CoverPhoto coverPhoto = await _db.CoverPhotos.FindAsync(id);
             if (coverPhoto == null)

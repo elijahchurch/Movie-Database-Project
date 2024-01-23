@@ -14,7 +14,7 @@ namespace MovieApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Poster>> GetPoster(int id)
+        public async Task<ActionResult<Poster>> GetPoster(string id)
         {
             Poster poster = await _db.Posters.FindAsync(id);
             if (poster == null)
@@ -34,7 +34,7 @@ namespace MovieApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePoster(int id)
+        public async Task<IActionResult> DeletePoster(string id)
         {
             Poster poster = await _db.Posters.FindAsync(id);
             if (poster == null)
