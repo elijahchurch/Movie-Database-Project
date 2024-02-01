@@ -1,4 +1,5 @@
 import React, {MouseEvent, useState} from "react";
+import {v4} from "uuid";
 
 const MovieForm = () => {
     const [movieName, setMovieName] = useState<string>("");
@@ -31,17 +32,23 @@ const MovieForm = () => {
     const handleMovieForm = async (event : MouseEvent) => {
         event?.preventDefault();
         const movieData = {
+            MovieId: v4(),
             Name: movieName,
             Date: movieYear,
             Length: movieLength,
             Rating: rating,
             OverView: overView
         };
-        const options = {
-            method: "POST",
-            body: JSON.stringify(movieData)
-        };
-        await fetch("http://localhost:5087/api/movies", options)
+        console.log(movieData);
+        // const options = {
+        //     method: "POST",
+        //     mode: 'cors',
+        //     body: JSON.stringify(movieData),
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        // };
+        await fetch("https://localhost:5001/api/movies", { method: "POST", mode: "cors", body: JSON.stringify(movieData)})
     };
 
     return(
@@ -68,7 +75,7 @@ const MovieForm = () => {
                     <option value="PG">PG</option>
                     <option value="PG-13">PG-13</option>
                     <option value="R">R</option>
-                    <option value="NR">NR</option>
+                    <option value="NR" selected>NR</option>
                 </select>
                 <label htmlFor="movieLength"> Run Time</label>
                 <input 
@@ -77,8 +84,11 @@ const MovieForm = () => {
                     min="0"
                     onChange={handleChange}
                 />
-                <label htmlFor="overView">Synopsis</label>
-                <textarea name="overView" onChange={handleChange}></textarea>
+                <textarea 
+                    name="overView" 
+                    onChange={handleChange} 
+                    placeholder="Enter the movie synopsis"
+                />
                 <button onClick={handleMovieForm} type="submit">Submit</button>
             </form>
         </div>
